@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Article = ({ author, text, bigText, visible, showBigText }) => (
+const Article = ({ author, text, bigText, visible, showBigText, deleteArticle, editArticle }) => (
 	<div className="article">
 		<p className="news__author"> {author}: </p>
 		<p className="news__text"> {text} </p>
@@ -11,6 +11,8 @@ const Article = ({ author, text, bigText, visible, showBigText }) => (
 			</a>
 		)}
 		{visible && <p className="news__big-text"> {bigText} </p>}
+		<button onClick={editArticle}>Езменить</button>
+		<button onClick={deleteArticle}>Удалить</button>
 	</div>
 );
 

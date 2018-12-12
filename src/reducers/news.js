@@ -4,6 +4,9 @@ import {
 	GET_NEWS_FAIL,
 	SHOW_BIGTEXT,
 	ADD_ARTICLE,
+	DELETE_ARTICLE,
+	EDIT_ARTICLE,
+	UPDATE_ARTICLE,
 } from "../actions/NewsActions";
 
 const initialState = {
@@ -45,6 +48,34 @@ export function newsReducer(state = initialState, action) {
 				...state,
 				data: [...state.data, action.data],
 			};
+
+		case DELETE_ARTICLE:
+		return {
+			...state,
+			data: state.data.filter(item => item.id !== action.id),
+		};
+
+		case EDIT_ARTICLE:
+		return {
+			...state,
+			data: state.data.map(item =>
+				item.id === action.id ? {...item, isEditing: !item.isEditing } : item
+			),
+		}
+
+		case UPDATE_ARTICLE:
+		return {
+			...state,
+			data: state.data.map(item => 
+				item.id === action.id ? {
+						...item, 
+						author: action.data.author,
+						text: action.data.text,
+						bigText: action.data.bigText,
+						isEditing: !item.isEditing }
+						: item
+			),
+		}
 
 		default:
 			return state;

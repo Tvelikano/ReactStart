@@ -1,25 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default class Add extends React.Component {
+export default class Edit extends React.Component {
 	handleSubmit = e => {
 		e.preventDefault();
 		const author = this.getAuthor.value;
 		const text = this.getText.value;
 		const bigText = this.getBigText.value;
 		const data = {
-			id: +new Date(),
 			author,
 			text,
 			bigText,
-			visible: false,
-			isEditing: false,
 		};
 
-		this.props.addArticle(data);
+		this.props.updateArticle(data);
 	};
 
 	render() {
+        const {author, text, bigText} = this.props;
 		return (
 			<form className="add" onSubmit={this.handleSubmit}>
 				<input
@@ -28,7 +26,8 @@ export default class Add extends React.Component {
 					type="text"
 					ref={input => (this.getAuthor = input)}
 					className="add__author"
-					placeholder="Ваше имя"
+                    placeholder="Ваше имя"
+                    defaultValue={author}
 				/>
 				<textarea
 					required
@@ -36,6 +35,7 @@ export default class Add extends React.Component {
 					className="add__text"
 					ref={input => (this.getText = input)}
 					placeholder="Заголовок новости"
+                    defaultValue={text}
 				/>
 				<textarea
 					required
@@ -43,6 +43,7 @@ export default class Add extends React.Component {
 					className="add__text"
 					ref={input => (this.getBigText = input)}
 					placeholder="Описание новости"
+                    defaultValue={bigText}
 				/>
 				<label className="add__checkrule">
 					<input onChange={this.onAgreeChangeHandler} type="checkbox" /> Я
@@ -54,6 +55,6 @@ export default class Add extends React.Component {
 	}
 }
 
-Add.propTypes = {
-	addArticle: PropTypes.func.isRequired,
+Edit.propTypes = {
+	updateArticle: PropTypes.func.isRequired,
 };

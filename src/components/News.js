@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Edit from "./Edit";
 import Article from "./Article";
 
 export default class News extends React.Component {
@@ -13,8 +14,10 @@ export default class News extends React.Component {
 
 	renderTemplate() {
 		const { isLoading, data } = this.props.data;
-		const { showBigText } = this.props;
+		const { showBigText, deleteArticle, editArticle, updateArticle } = this.props;
 		let template;
+
+		console.log(data);
 
 		if (isLoading) {
 			template = <p>Загрузка...</p>;
@@ -22,15 +25,19 @@ export default class News extends React.Component {
 			if (data.length) {
 				template = (
 					<div>
-						{data.map(function(item) {
-							return (
-								<Article
-									key={item.id}
-									{...item}
+						{data.map(item => (
+							<div key={item.id}>
+								{item.isEditing 
+									? <Edit {...item}
+									updateArticle={(data) => updateArticle(item.id, data)}/>
+									: <Article {...item}
 									showBigText={() => showBigText(item.id)}
-								/>
-							);
-						})}
+									deleteArticle={() => deleteArticle(item.id)}
+									editArticle={() => editArticle(item.id)}
+								/>}		
+							</div>														
+							))
+						})
 						<strong className={"news__count"}>
 							Всего записей {data.length}
 						</strong>
@@ -57,4 +64,7 @@ export default class News extends React.Component {
 News.propTypes = {
 	getNews: PropTypes.func.isRequired,
 	showBigText: PropTypes.func.isRequired,
+	deleteArticle: PropTypes.func.isRequired,
+	editArticle:PropTypes.func.isRequired,
+	updateArticle: PropTypes.func.isRequired,
 };
