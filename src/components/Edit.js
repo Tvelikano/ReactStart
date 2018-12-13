@@ -17,7 +17,7 @@ export default class Edit extends React.Component {
 	};
 
 	render() {
-        const {author, text, bigText} = this.props;
+		const { author, text, bigText } = this.props;
 		return (
 			<form className="add" onSubmit={this.handleSubmit}>
 				<input
@@ -26,8 +26,8 @@ export default class Edit extends React.Component {
 					type="text"
 					ref={input => (this.getAuthor = input)}
 					className="add__author"
-                    placeholder="Ваше имя"
-                    defaultValue={author}
+					placeholder="Ваше имя"
+					defaultValue={author}
 				/>
 				<textarea
 					required
@@ -35,7 +35,7 @@ export default class Edit extends React.Component {
 					className="add__text"
 					ref={input => (this.getText = input)}
 					placeholder="Заголовок новости"
-                    defaultValue={text}
+					defaultValue={text}
 				/>
 				<textarea
 					required
@@ -43,7 +43,7 @@ export default class Edit extends React.Component {
 					className="add__text"
 					ref={input => (this.getBigText = input)}
 					placeholder="Описание новости"
-                    defaultValue={bigText}
+					defaultValue={bigText}
 				/>
 				<label className="add__checkrule">
 					<input onChange={this.onAgreeChangeHandler} type="checkbox" /> Я

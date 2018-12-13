@@ -5,7 +5,7 @@ export const SHOW_BIGTEXT = "SHOW_BIGTEXT";
 export const ADD_ARTICLE = "ADD_ARTICLE";
 export const DELETE_ARTICLE = "DELETE_ARTICLE";
 export const EDIT_ARTICLE = "EDIT_ARTICLE";
-export const UPDATE_ARTICLE = "UPDATE_ARTICLE"
+export const UPDATE_ARTICLE = "UPDATE_ARTICLE";
 
 export function getNews() {
 	return dispatch => {
@@ -51,11 +51,11 @@ export const deleteArticle = id => ({
 
 export const editArticle = id => ({
 	type: EDIT_ARTICLE,
-	id
+	id,
 });
 
 export const updateArticle = (id, data) => ({
 	type: UPDATE_ARTICLE,
 	id,
 	data,
-})
+});

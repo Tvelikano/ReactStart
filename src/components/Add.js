@@ -45,8 +45,12 @@ export default class Add extends React.Component {
 					placeholder="Описание новости"
 				/>
 				<label className="add__checkrule">
-					<input onChange={this.onAgreeChangeHandler} type="checkbox" /> Я
-					согласен с правилами
+					<input
+						required
+						onChange={this.onAgreeChangeHandler}
+						type="checkbox"
+					/>{" "}
+					Я согласен с правилами
 				</label>
 				<button className="add__btn">Добавить новость</button>
 			</form>

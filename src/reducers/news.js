@@ -50,32 +50,34 @@ export function newsReducer(state = initialState, action) {
 			};
 
 		case DELETE_ARTICLE:
-		return {
-			...state,
-			data: state.data.filter(item => item.id !== action.id),
-		};
+			return {
+				...state,
+				data: state.data.filter(item => item.id !== action.id),
+			};
 
 		case EDIT_ARTICLE:
-		return {
-			...state,
-			data: state.data.map(item =>
-				item.id === action.id ? {...item, isEditing: !item.isEditing } : item
-			),
-		}
+			return {
+				...state,
+				data: state.data.map(item =>
+					item.id === action.id ? { ...item, isEditing: !item.isEditing } : item
+				),
+			};
 
 		case UPDATE_ARTICLE:
-		return {
-			...state,
-			data: state.data.map(item => 
-				item.id === action.id ? {
-						...item, 
-						author: action.data.author,
-						text: action.data.text,
-						bigText: action.data.bigText,
-						isEditing: !item.isEditing }
+			return {
+				...state,
+				data: state.data.map(item =>
+					item.id === action.id
+						? {
+								...item,
+								author: action.data.author,
+								text: action.data.text,
+								bigText: action.data.bigText,
+								isEditing: !item.isEditing,
+						  }
 						: item
-			),
-		}
+				),
+			};
 
 		default:
 			return state;

@@ -1,4 +1,4 @@
-export const ping = store => next => action => {
+export const myLogger = store => next => action => {
 	console.log(
 		`Тип события: ${action.type}, дополнительные данные события: ${
 			action.payload

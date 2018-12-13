@@ -1,7 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Article = ({ author, text, bigText, visible, showBigText, deleteArticle, editArticle }) => (
+const Article = ({
+	author,
+	text,
+	bigText,
+	visible,
+	showBigText,
+	deleteArticle,
+	editArticle,
+}) => (
 	<div className="article">
 		<p className="news__author"> {author}: </p>
 		<p className="news__text"> {text} </p>

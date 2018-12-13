@@ -2,9 +2,9 @@ import { createStore, applyMiddleware } from "redux";
 import { rootReducer } from "../reducers";
 import logger from "redux-logger";
 import thunk from "redux-thunk";
-import { ping } from "./enchancers/ping";
+import { myLogger } from "./enchancers/logger";
 
 export const store = createStore(
 	rootReducer,
-	applyMiddleware(thunk, logger, ping)
+	applyMiddleware(thunk, logger, myLogger)
 );

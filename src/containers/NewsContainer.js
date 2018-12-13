@@ -1,6 +1,12 @@
 import { connect } from "react-redux";
 import News from "../components/News";
-import { getNews, showBigText, deleteArticle, editArticle, updateArticle } from "../actions/NewsActions";
+import {
+	getNews,
+	showBigText,
+	deleteArticle,
+	editArticle,
+	updateArticle,
+} from "../actions/NewsActions";
 
 const mapStateToProps = store => {
 	return {
@@ -14,7 +20,7 @@ const mapDispatchToProps = dispatch => {
 		showBigText: id => dispatch(showBigText(id)),
 		deleteArticle: id => dispatch(deleteArticle(id)),
 		editArticle: id => dispatch(editArticle(id)),
-		updateArticle: (id, data) => dispatch(updateArticle(id, data))
+		updateArticle: (id, data) => dispatch(updateArticle(id, data)),
 	};
 };
 
